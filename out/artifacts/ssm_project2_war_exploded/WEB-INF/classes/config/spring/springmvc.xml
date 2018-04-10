@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd ">
+
+    <!-- 使用spring组件扫描，一次性配置此包下所有controller -->
+    <context:component-scan base-package="controller"/>
+
+    <!-- 配置注解驱动，代替注解的映射器和适配器 -->
+    <!-- 这里的conversion-service表示转换器，在下边使用bean配置转换器 -->
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+
+    <!-- 配置视图解析器 -->
+    <!-- 要求将jstl加到classpath中
+        prefix:代表请求url的前缀
+        suffix:代表请求的url后缀
+        设置了这两个属性值之后，在controller中进行代码开发时返回的
+        modelandview对象设置的页面路径就不需要带前缀名和后缀名了 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- 自定义参数绑定 -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <!-- 日期类型转换器 -->
+                <bean class="controller.converter.DateConverter"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
