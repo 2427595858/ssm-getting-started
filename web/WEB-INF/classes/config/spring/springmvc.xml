@@ -38,6 +38,8 @@
             <list>
                 <!-- 日期类型转换器 -->
                 <bean class="controller.converter.DateConverter"/>
+                <!-- 去除字符串两边空格的转换器 -->
+                <bean class="controller.converter.TrimStringConverter"/>
             </list>
         </property>
     </bean>
