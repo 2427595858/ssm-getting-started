@@ -19,31 +19,40 @@
 <body>
     <form class="layui-form" action="${pageContext.request.contextPath}/items/queryItems.action" method="post">
         <label class="layui-form-label">查询条件</label>
-        <button class="layui-btn" type="submit" value="查询">查询</button>
+        <div class="layui-input-block">
+            <label class="layui-form-label">商品名称</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="itemCustom.name">
+            </div>
+            <div class="layui-input-inline">
+                <button class="layui-btn" type="submit" value="查询">查询</button>
+            </div>
+        </div>
+		
+		<table class="layui-table" lay-size="sm">
+			<thead>
+				<th>商品名称</th>
+				<th>商品价格</th>
+				<th>商品详情</th>
+				<th>生产日期</th>
+				<th>操作</th>
+			</thead>
+			<tbody>
+				<c:forEach items="${itemsList}" var="item">
+					<tr>
+						<td>${item.name}</td>
+						<td>${item.price}</td>
+						<td>${item.detail}</td>
+						<td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+						<td>
+							<a class="layui-btn layui-btn-sm" href="${pageContext.request.contextPath}/items/editItems.action?id=${item.id}">修改</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
     </form>
 
-    <table class="layui-table" lay-size="sm">
-        <thead>
-            <th>商品名称</th>
-            <th>商品价格</th>
-            <th>商品详情</th>
-            <th>生产日期</th>
-            <th>操作</th>
-        </thead>
-        <tbody>
-            <c:forEach items="${itemsList}" var="item">
-                <tr>
-                    <td>${item.name}</td>
-                    <td>${item.price}</td>
-                    <td>${item.detail}</td>
-                    <td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-                    <td>
-                        <a class="layui-btn layui-btn-sm" href="${pageContext.request.contextPath}/items/editItems.action?id=${item.id}">修改</a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
 
     <script>
         layui.use('form', function () {
