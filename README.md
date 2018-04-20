@@ -19,6 +19,5 @@
 提交后的商品信息显示
 ![修改后](https://raw.githubusercontent.com/2427595858/ssm-getting-started/master/img/%E4%BF%AE%E6%94%B9%E5%90%8E.png)
 
-更多详细的步骤以及相关知识都记录在[我的博客](https://2427595858.github.io/2018/04/03/Spring4-SpringMVC-mybatis%E6%95%B4%E5%90%88/)中，若有需要，可以前往查看
 
 前端框架layui的相关知识的学习请前往[layui官网](http://www.layui.com/)
