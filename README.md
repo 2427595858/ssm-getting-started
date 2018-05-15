@@ -19,5 +19,8 @@
 提交后的商品信息显示
 ![修改后](https://raw.githubusercontent.com/2427595858/ssm-getting-started/master/img/%E4%BF%AE%E6%94%B9%E5%90%8E.png)
 
+详细教程请到[我的博客](https://blog.csdn.net/silversoldier/article/details/80325236)观看
 
 前端框架layui的相关知识的学习请前往[layui官网](http://www.layui.com/)
+
+如果觉得不错的话，请给个star吧
